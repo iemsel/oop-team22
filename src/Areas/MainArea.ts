@@ -123,4 +123,11 @@ export default class MainArea extends Area {
       this.endButton.render();
     }
   }
+
+  public override getButtonImage(): string {
+      if (LostInTheForest.currentStage === this) {
+        return './assets/Map/atMain.png';
+      }
+      return './assets/Map/main.png';
+    }
 }

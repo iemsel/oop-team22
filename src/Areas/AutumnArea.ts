@@ -56,4 +56,16 @@ export default class AutumnArea extends Area {
     super.update(elapsed);
     this.player.setPosX(LostInTheForest.canvas.width * 0.05);
   }
+
+  public override getButtonImage(): string {
+    if (LostInTheForest.currentStage === this) {
+      return './assets/Map/atArea.png';
+    }
+
+    if (LostInTheForest.keyHistory) {
+      return './assets/Map/finishedArea.png';
+    }
+
+    return './assets/Map/unfinishedArea.png';
+  }
 }

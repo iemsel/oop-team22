@@ -21,26 +21,7 @@ export default class AreaButton extends Button {
    * Gives the right map icon depending on if its on the area and if the area is finished
    */
   public update(): void {
-    // Area is a main area
-    if (this.area instanceof MainArea) {
-      this.image = CanvasRenderer.loadNewImage('./assets/Map/main.png');
-      // Current stage is Main
-      if (LostInTheForest.currentStage instanceof MainArea) {
-        this.image = CanvasRenderer.loadNewImage('./assets/Map/atMain.png');
-      }
-      // Current stage
-    } else if (LostInTheForest.currentStage === this.area) {
-      this.image = CanvasRenderer.loadNewImage('./assets/Map/atArea.png');
-      // Stage is finished or not
-    } else if (this.area instanceof AutumnArea && LostInTheForest.keyHistory ||
-      this.area instanceof WinterArea && LostInTheForest.keyBiology ||
-      this.area instanceof SpringArea && LostInTheForest.keyPhysics ||
-      this.area instanceof SummerArea && LostInTheForest.keyGeography
-    ) {
-      this.image = CanvasRenderer.loadNewImage('./assets/Map/finishedArea.png');
-    } else {
-      this.image = CanvasRenderer.loadNewImage('./assets/Map/unfinishedArea.png');
-    }
+    this.image = CanvasRenderer.loadNewImage(this.area.getButtonImage());
   }
 
   public getArea(): Area {

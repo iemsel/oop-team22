@@ -161,6 +161,8 @@ export default abstract class Area extends Stage {
     this.challengeStarts = false;
   }
 
+  abstract getButtonImage(): string;
+
   /**
    * Renders the bg, animal, dialogue, player, button and gives settings for dialogue.
    */

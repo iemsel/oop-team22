@@ -57,4 +57,16 @@ export default class SummerArea extends Area {
     super.update(elapsed);
     this.player.setPosX(LostInTheForest.canvas.width * 0.5);
   }
+
+  public override getButtonImage(): string {
+    if (LostInTheForest.currentStage === this) {
+      return './assets/Map/atArea.png';
+    }
+
+    if (LostInTheForest.keyGeography) {
+       return './assets/Map/finishedArea.png';
+    }
+
+    return './assets/Map/unfinishedArea.png';
+  }
 }

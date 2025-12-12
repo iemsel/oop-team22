@@ -57,4 +57,16 @@ export default class WinterArea extends Area {
     super.update(elapsed);
     this.player.setPosX(LostInTheForest.canvas.width * 0.15);
   }
+
+  public override getButtonImage(): string {
+    if (LostInTheForest.currentStage === this) {
+      return './assets/Map/atArea.png';
+    }
+
+    if (LostInTheForest.keyBiology) {
+       return './assets/Map/finishedArea.png';
+    }
+
+    return './assets/Map/unfinishedArea.png';
+  }
 }

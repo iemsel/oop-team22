@@ -9,6 +9,7 @@ import CanvasRenderer from './Base/CanvasRenderer.js';
 import LostInTheForest from './LostInTheForest.js';
 import Player from './Player.js';
 import Stage from './Stage.js';
+import MapButtonFactory from './MapButtonFactory.js';
 
 export default class Map extends CanvasItem {
   private areaButtons: AreaButton[];
@@ -18,28 +19,12 @@ export default class Map extends CanvasItem {
   public constructor(player: Player) {
     super();
     this.nextArea = null;
-    // TODO: Add the area buttons to the array
     this.image = CanvasRenderer.loadNewImage('./assets/Map/map.png');
     this.position.x = LostInTheForest.canvas.width * 0.8;
     this.position.y = 0;
     this.size.x = LostInTheForest.canvas.width * 0.2;
     this.size.y = LostInTheForest.canvas.width * 0.2;
-    this.areaButtons = [];
-    this.areaButtons.push(new AreaButton(new MainArea(player),
-      this.getPosX() + LostInTheForest.canvas.width * 0.04,
-      this.getPosY() + LostInTheForest.canvas.width * 0.05));
-    this.areaButtons.push(new AreaButton(new SpringArea(player),
-      this.getPosX() + LostInTheForest.canvas.width * 0.09,
-      this.getPosY() + LostInTheForest.canvas.width * 0.12));
-    this.areaButtons.push(new AreaButton(new SummerArea(player),
-      this.getPosX() + LostInTheForest.canvas.width * 0.08,
-      this.getPosY() + LostInTheForest.canvas.width * 0.06));
-    this.areaButtons.push(new AreaButton(new WinterArea(player),
-      this.getPosX() + LostInTheForest.canvas.width * 0.11,
-      this.getPosY() + LostInTheForest.canvas.width * 0.09));
-    this.areaButtons.push(new AreaButton(new AutumnArea(player),
-      this.getPosX() + LostInTheForest.canvas.width * 0.06,
-      this.getPosY() + LostInTheForest.canvas.width * 0.1));
+    this.areaButtons = MapButtonFactory.createAllButtons(player, this);
   }
 
   /**
